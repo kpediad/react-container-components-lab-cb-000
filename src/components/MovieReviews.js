@@ -1,14 +1,15 @@
 // Code MovieReviews Here
-const Review = ({ title, img_url }) => (
+const Review = ({ title, headline, summary, date }) => (
   <div className="review">
-    <img src={ img_url } />
     <h3>{ title }</h3>
+    <h3>{ headline }</h3>
+    <p>{ summary } - Published on: {date}</p>
   </div>
 )
 
 
 export default const MovieReviews = ({ reviews }) => (
   <div className="review-list">
-    { reviews.map(review => <Review title={book.title} img_url={book.image_url} />) }
+    { reviews.map(review => <Review title={review.display_title} headline={review.headline} summary={review.summary_short} date={review.publication_date}/>) }
   </div>
 )
