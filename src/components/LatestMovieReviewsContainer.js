@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'es6-promise';
 import 'isomorphic-fetch';
 import MovieReviews from './MovieReviews'
 
@@ -11,25 +10,19 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
 class LatestMovieReviewsContainer extends React.Component {
   constructor() {
     super()
-
+ 
     this.state = {
       reviews: []
     };
   }
-
+ 
   componentDidMount() {
     fetch(URL)
-      	.then(function(response) {
-      		if (response.status >= 400) {
-      			throw new Error("Bad response from server");
-      		}
-      		return response.json();
-      	})
-      	.then(function(stories) {
-      		console.log(stories);
-      	});
-
+      .then(response => response.json())
+      .then(reviews => this.setState({ reviews }))
+  }
+ 
   render() {
-    return <BookList books={this.state.books} />
+    return <MovieReviews reviews={this.state.reviews} />
   }
 }
