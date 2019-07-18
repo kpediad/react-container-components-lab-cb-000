@@ -8,8 +8,10 @@ const Review = ({ title, headline, summary, date }) => (
 )
 
 
-export default const MovieReviews = ({ reviews }) => (
+const MovieReviews = ({ reviews }) => (
   <div className="review-list">
     { reviews.map(review => <Review title={review.display_title} headline={review.headline} summary={review.summary_short} date={review.publication_date}/>) }
   </div>
 )
+
+export default MovieReviews;
