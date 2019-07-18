@@ -22,8 +22,7 @@ class SearchableMovieReviewsContainer extends React.Component {
     });
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = () => {
     fetch(URL + this.state.searchTerm + `api-key=${NYT_API_KEY}`)
       .then(response => response.json())
       .then(reviews => this.setState({ reviews }));
@@ -32,7 +31,7 @@ class SearchableMovieReviewsContainer extends React.Component {
   render() {
     return (
       <div className="searchable-movie-reviews">
-        <form onSubmit={event => this.handleSubmit(event)}>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.searchTerm} onChange={event => this.handleChange(event)} />
         </form>
         <MovieReviews reviews={this.state.reviews} />
